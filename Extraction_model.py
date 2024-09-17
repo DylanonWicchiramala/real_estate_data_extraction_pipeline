@@ -5,7 +5,7 @@ from langchain_core.pydantic_v1 import BaseModel, Field
 from typing import Tuple, List, Optional
 from langchain_community.embeddings.openai import OpenAIEmbeddings
 import dotenv
-# from dateutil import parser
+from dateutil import parser
 
 dotenv.load_dotenv()
 

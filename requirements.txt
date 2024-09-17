@@ -10,3 +10,4 @@ python-dotenv
 regex
 APScheduler
 apify-client
+python-dateutil==2.9.0.post0
