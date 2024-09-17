@@ -11,7 +11,7 @@ regex
 APScheduler
 apify-client
 python-dateutil==2.9.0.post0
-pillow==10.4.0
+pillow==2.6.1
 google-cloud-core==2.4.1
 google-cloud-firestore==2.18.0
 google-cloud-storage==2.18.
