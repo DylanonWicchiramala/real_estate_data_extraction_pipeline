@@ -182,21 +182,20 @@ def check_dict_keys(d):
             return False
     return True
 
-def main():
+def run():
     house_list = extract_data()
     transform_and_upload_data(house_list)
     delete_empty_data()
     
     
-# Create a scheduler
-if __name__=="__main__":
+def schedule_run():
     sched = BlockingScheduler()
-    
+
     # Schedule tasks
-    sched.add_job(main, 'interval', days=1) 
-    
+    sched.add_job(run, 'interval', days=1) 
+
     try:
-        main()
+        run()
         # Run task every day
         sched.start()
     except Exception as e: 
@@ -206,4 +205,7 @@ if __name__=="__main__":
         db_client.close()
     # Start the scheduler
 
-db_client.close()
+    
+# Create a scheduler
+if __name__=="__main__":
+    schedule_run()
