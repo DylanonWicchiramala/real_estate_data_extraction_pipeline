@@ -9,8 +9,8 @@ COPY . /app
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip install -r requirements.txt
 
-# Make port 5050 available to the world outside this container
-EXPOSE 8080
+# # Make port 5050 available to the world outside this container
+# EXPOSE 8080
 
 CMD gunicorn --bind :8080 main:app --timeout 5000
 # # Run api.py when the container launches
