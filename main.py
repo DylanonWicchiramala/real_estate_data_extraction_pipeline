@@ -8,16 +8,9 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 pipeline.schedule_run()
 
-# @app.route('/', methods=['GET'])
-# async def webhook():
-        
-#     try:
-        
-#         return jsonify({"status": "healthy"}), 200
-    
-#     except Exception as e:
-#         app.logger.error(f"Error: {e}")
-#         return jsonify({"error": str(e)}), 500
+@app.route('/', methods=['GET'])
+async def webhook():
+    health_check()
         
         
 @app.route('/health', methods=['GET'])
