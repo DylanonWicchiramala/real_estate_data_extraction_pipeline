@@ -11,7 +11,7 @@ dotenv.load_dotenv()
 import pymongo
 
 import requests
-from PIL import Image
+import image
 from io import BytesIO
 from google.cloud import storage, firestore
 from datetime import datetime
@@ -152,7 +152,7 @@ def download_webp_image(url, save_path):
     response.raise_for_status()  # Check for errors (e.g., 404)
 
     # Open WebP directly from the response content
-    with Image.open(BytesIO(response.content)) as img:
+    with image.open(BytesIO(response.content)) as img:
         img.thumbnail((800, 600))
         img.save(save_path)
 
