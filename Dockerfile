@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . /app
 
 RUN pip install --no-cache-dir --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Make port 5050 available to the world outside this container
 EXPOSE 8080
