@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 
-# pipeline.schedule_run()
+pipeline.schedule_run()
 
 @app.route('/', methods=['GET'])
 async def webhook():
