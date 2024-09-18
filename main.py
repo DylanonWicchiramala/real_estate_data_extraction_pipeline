@@ -25,5 +25,5 @@ def health_check():
                 
 
 # Run the Flask app
-if __name__ == '__main__':
-    app.run(port=8080, debug=True)
+# if __name__ == '__main__':
+#     app.run(port=8080, debug=True)
