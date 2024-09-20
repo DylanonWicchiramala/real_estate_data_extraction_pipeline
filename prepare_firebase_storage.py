@@ -40,16 +40,4 @@ def prepare_firebase_storage():
 
     # Print the loaded JSON data
     print("Loaded JSON data:")
-    print(json.dumps(data, indent=4))
-    print(json.dumps(data, indent=4))
-    print(json.dumps(data, indent=4))
-    print(json.dumps(data, indent=4))
-    print(json.dumps(data, indent=4))
-    print(json.dumps(data, indent=4))
-    print(json.dumps(data, indent=4))
-    print(json.dumps(data, indent=4))
-    print(json.dumps(data, indent=4))
-    print(json.dumps(data, indent=4))
-    print(json.dumps(data, indent=4))
-    print(json.dumps(data, indent=4))
-    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))\
