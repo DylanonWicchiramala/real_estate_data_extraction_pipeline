@@ -11,10 +11,14 @@ dotenv.load_dotenv()
 import pymongo
 
 import requests
-import image
+
+try:
+    import image
+except:
+    from PIL import Image as image
+    
 from io import BytesIO
 from google.cloud import storage, firestore
-import firebase_admin
 from datetime import datetime
 
 # Set up Google Cloud Storage and Firestore clients
@@ -25,6 +29,10 @@ try:
     firestore_db = firestore.Client()
     storage_client = storage.Client()
 except:
+    from firebase_admin import firestore, credentials
+
+    cred = credentials.Certificate(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+
     storage_client = firebase_admin.firestore.client()
 
 
