@@ -17,7 +17,8 @@ from google.cloud import storage, firestore
 from datetime import datetime
 
 # Set up Google Cloud Storage and Firestore clients
-import prepare_firebase_storage
+from prepare_firebase_storage import prepare_firebase_storage
+prepare_firebase_storage()
 
 firestore_db = firestore.Client()
 storage_client = storage.Client()
