@@ -13,7 +13,8 @@ import pymongo
 import requests
 import image
 from io import BytesIO
-from google.cloud import storage, firestore, firebase_admin
+from google.cloud import storage, firestore
+import firebase_admin
 from datetime import datetime
 
 # Set up Google Cloud Storage and Firestore clients
