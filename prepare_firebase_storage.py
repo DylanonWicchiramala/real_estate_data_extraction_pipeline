@@ -33,4 +33,23 @@ def prepare_firebase_storage():
         json.dump(json_data, json_file, indent=4)
 
     print("JSON file created successfully.")
-    print(json_data)
+    
+    # Load the JSON data from the file
+    with open(private_path, "r") as json_file:
+        data = json.load(json_file)
+
+    # Print the loaded JSON data
+    print("Loaded JSON data:")
+    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))
+    print(json.dumps(data, indent=4))
