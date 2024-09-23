@@ -32,8 +32,6 @@ except:
     from firebase_admin import firestore, credentials
     from google.cloud import storage
 
-    storage_client = firebase_admin.firestore.client()
-    
     # Set environment variable for the JSON file path
     os.environ['FIREBASE_CREDENTIALS'] = 'gs://run-sources-kfc-bot-426403-asia-east1/estate-390b4-firebase-adminsdk-vdn1h-391ec9b01d.json'
 
@@ -45,7 +43,7 @@ except:
 
     # Initialize Firebase with the downloaded credentials
     cred = credentials.Certificate('firebase_credentials.json')
-    storage_client = firebase_admin.firestore.client()
+    storage_client = firestore.client()
     
 
 
