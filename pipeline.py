@@ -30,10 +30,24 @@ try:
     storage_client = storage.Client()
 except:
     from firebase_admin import firestore, credentials
-
-    cred = credentials.Certificate(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+    from google.cloud import storage
 
     storage_client = firebase_admin.firestore.client()
+    
+    # Set environment variable for the JSON file path
+    os.environ['FIREBASE_CREDENTIALS'] = 'gs://run-sources-kfc-bot-426403-asia-east1/estate-390b4-firebase-adminsdk-vdn1h-391ec9b01d.json'
+
+    # Download the JSON file from Cloud Storage
+    storage_client = storage.Client()
+    bucket = storage_client.bucket('run-sources-kfc-bot-426403-asia-east1')
+    blob = bucket.blob('estate-390b4-firebase-adminsdk-vdn1h-391ec9b01d.json')
+    blob.download_to_filename('firebase_credentials.json')
+
+    # Initialize Firebase with the downloaded credentials
+    cred = credentials.Certificate('firebase_credentials.json')
+    storage_client = firebase_admin.firestore.client()
+    
+
 
 
 logging.basicConfig(level=logging.INFO)
