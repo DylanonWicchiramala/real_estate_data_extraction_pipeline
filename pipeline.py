@@ -2,6 +2,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 import logging
 from datetime import datetime
 from apify_client import ApifyClient
+import apify_client
 import re
 import Extraction_model
 from dateutil import parser
@@ -64,8 +65,12 @@ client = ApifyClient(APIFY_API_KEY)
 #? previous list for initiate
 previous_id = "159hALfBmD4OrehG0"
 previous_house_list = []
-for item in client.dataset(previous_id).iterate_items():
-    previous_house_list.append(item)
+try:
+    for item in client.dataset(previous_id).iterate_items():
+        previous_house_list.append(item)
+except apify_client._errors.ApifyApiError:
+    previous_house_list = []
+    
 house_list = []
 
 def extract_data():
