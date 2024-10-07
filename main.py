@@ -10,7 +10,13 @@ pipeline.schedule_run()
 
 @app.route('/', methods=['GET'])
 async def webhook():
-    health_check()
+    try:
+        # Perform any necessary checks here (e.g., database connection, etc.)
+        # For now, we just return a simple success message
+        return jsonify({"status": "healthy"}), 200
+    except Exception as e:
+        # If something goes wrong, return an error message
+        return jsonify({"status": "unhealthy", "error": str(e)}), 500()
         
         
 @app.route('/health', methods=['GET'])
