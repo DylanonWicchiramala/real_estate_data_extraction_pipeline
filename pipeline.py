@@ -123,7 +123,7 @@ def transform_and_upload_data(house_list):
 
         if "ต้องการขายบ้าน" == extraction["post_type"] and not check_dict_keys(extraction):
             del extraction["post_type"]
-            unit_id = "F" + str(int(get_unit_id() + 1))
+            unit_id = get_next_id(get_unit_id())
             extraction["unit_id"] = unit_id
 
             # change facebook img url to cloudinary
@@ -145,6 +145,40 @@ def transform_and_upload_data(house_list):
     previous_house_list = house_list
     return extraction_list
 
+
+def get_next_id(current_id: str) -> str:
+    def __increment_letters(letters: str) -> str:
+        # Convert letters to a list for manipulation
+        letters = list(letters)
+        i = len(letters) - 1
+
+        # Process from the rightmost character
+        while i >= 0:
+            if letters[i] == 'Z':
+                letters[i] = 'A'
+            else:
+                letters[i] = chr(ord(letters[i]) + 1)
+                return ''.join(letters)
+            i -= 1
+
+        # If all characters are 'Z', add another 'A' at the front
+        return 'A' + ''.join(letters)
+
+    # Separate the letter(s) and number
+    letters = ''.join([ch for ch in current_id if ch.isalpha()])
+    digits = ''.join([ch for ch in current_id if ch.isdigit()])
+
+    # Increment the number part
+    next_digit = str(int(digits) + 1)
+
+    # If the number part overflows (e.g., 'A9' -> 'A10'), reset to 0 and increment the letter
+    if len(next_digit) > len(digits):
+        next_digit = "0"
+        letters = __increment_letters(letters)
+
+    return letters + next_digit
+
+
 def get_unit_id():
     #? check atleast location, price, bathroom, bedrooms have to 
 
@@ -157,9 +191,7 @@ def get_unit_id():
     if result:
         for i in result:
             unit_id = i["unit_id"]
-    regex = re.search(r'\d+', unit_id)
-    return int(regex.group())
-    # logging.info(f"Load items completed ({count})")
+    return unit_id
 
 def delete_empty_data():
     query = {
